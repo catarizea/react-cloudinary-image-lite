@@ -20,7 +20,7 @@ export const Density: Story = {
     src: 'blog/jedi-knight-3-v6_grl6fe.png',
     width: 1823,
     height: 1660,
-    alt: 'jedi khight',
+    alt: 'jedi knight',
     switching: Switching.Density,
     quality: 90,
     sizes: '480px',

@@ -15,13 +15,15 @@
     "husky:configure": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "prebuild": "npm run clean",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "storybook:build": "storybook build",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:serve": "cd storybook-static && http-server -p 6006"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
+      "npm run test",
       "npm run lint",
       "npm run format"
     ]
@@ -65,6 +67,9 @@
     "@storybook/react": "7.6.7",
     "@storybook/react-webpack5": "7.6.7",
     "@storybook/test": "7.6.7",
+    "@testing-library/jest-dom": "6.1.6",
+    "@testing-library/react": "14.1.2",
+    "@types/jest": "29.5.11",
     "@types/node": "20.10.6",
     "@types/react": "18.2.46",
     "@typescript-eslint/eslint-plugin": "6.17.0",
@@ -75,6 +80,8 @@
     "eslint-plugin-storybook": "0.6.15",
     "http-server": "14.1.1",
     "husky": "8.0.3",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
     "lint-staged": "15.2.0",
     "prettier": "3.1.1",
     "react": "18.2.0",
@@ -85,6 +92,8 @@
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.2",
     "storybook": "7.6.7",
+    "ts-jest": "29.1.1",
+    "ts-node": "10.9.2",
     "typescript": "5.3.3"
   }
 }
