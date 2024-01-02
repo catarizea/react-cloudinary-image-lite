@@ -93,16 +93,16 @@ export const Image = ({
 
   const classNames = className ? { className } : {};
 
-  const placeholderStyle: CSSProperties = {};
+  let placeholderStyle: CSSProperties = {};
 
   if (loaded) {
-    placeholderStyle.display = 'none';
+    placeholderStyle = { display: 'none' };
   }
 
-  const imgStyle: CSSProperties = { opacity: 0 };
+  let imgStyle: CSSProperties = { opacity: 0 };
 
   if (loaded) {
-    imgStyle.opacity = 1;
+    imgStyle = { opacity: 1 };
   }
 
   return (

@@ -1,4 +1,9 @@
 {
+  "exclude": [
+    "**/__tests__",
+    "**/*.test.ts",
+    "**/*.stories.ts"
+  ],
   "compilerOptions": {
     "target": "ES2015",
     "jsx": "react",
