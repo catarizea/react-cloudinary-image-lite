@@ -4,7 +4,7 @@ This component is preparing **WebP and AVIF image sets** from assets hosted on C
 
 This a simple no-fuss React Image component to help you get up and running with responsive image sets from Cloudinary. For a more complex use case you can find other packages on NPM registry like Cloudinary React SDK `@cloudinary/react`.
 
-## Instalation
+## Installation
 
 ```bash
 npm i react-cloudinary-image-lite
