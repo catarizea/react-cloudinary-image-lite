@@ -1,6 +1,6 @@
 import React, { CSSProperties, useState } from 'react';
 
-import { Breakpoints, Common, Switching } from '../../types';
+import { Common, Switching } from '../../types';
 import { createSrcSet, createUrl, sizesStringToArray } from '../../utils';
 
 export interface ImageProps
@@ -20,8 +20,6 @@ export interface ImageProps
   switching: Switching;
   notResponsive?: boolean;
   style?: CSSProperties;
-  currentBreakpoint?: string;
-  widthsByBreakpoint?: Breakpoints;
   onLoaded?: (dataIndex: string) => void;
   aspectRatio?: number;
   dataIndex?: string;
@@ -44,8 +42,6 @@ export const Image = ({
   switching,
   notResponsive,
   style,
-  currentBreakpoint,
-  widthsByBreakpoint,
   onLoaded,
   aspectRatio,
   dataIndex,
@@ -56,14 +52,6 @@ export const Image = ({
   const [loaded, loadedSet] = useState(false);
 
   const sizesArr = sizesStringToArray(sizes);
-
-  if (switching === Switching.Resolution && !currentBreakpoint) {
-    throw new Error('currentBreakpoint prop not set for resolution switching');
-  }
-
-  if (switching === Switching.Resolution && !widthsByBreakpoint) {
-    throw new Error('widthsByBreakpoint prop not set for resolution switching');
-  }
 
   if (!sizesArr) {
     throw new Error('Sizes attribute is not valid');
@@ -95,15 +83,7 @@ export const Image = ({
 
   const sizesProp = switching === Switching.Resolution ? { sizes } : {};
 
-  let computedWidth = sizesArr[sizesArr.length - 1].width;
-
-  if (
-    switching === Switching.Resolution &&
-    widthsByBreakpoint &&
-    currentBreakpoint
-  ) {
-    computedWidth = widthsByBreakpoint[currentBreakpoint];
-  }
+  const computedWidth = sizesArr[sizesArr.length - 1].width;
 
   const computedHeight = Math.round(computedWidth / ratio);
 

@@ -3,10 +3,6 @@ export enum Switching {
   Resolution = 'resolution',
 }
 
-export type Breakpoints = {
-  [key: string]: number;
-};
-
 export type Size = {
   query: string;
   width: number;
