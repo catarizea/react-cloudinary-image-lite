@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
 import Image, { Switching } from './Image';
@@ -63,5 +63,76 @@ describe('Image', () => {
       'srcset',
       'https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,c_fill,w_500,ar_0.9/v1/blog/rabbitmq_rctwjf.png 500w, https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,c_fill,w_400,ar_0.9/v1/blog/rabbitmq_rctwjf.png 400w, https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,c_fill,w_400,ar_0.9/v1/blog/rabbitmq_rctwjf.png 400w, https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,c_fill,w_450,ar_0.9/v1/blog/rabbitmq_rctwjf.png 450w, https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,c_fill,w_360,ar_0.9/v1/blog/rabbitmq_rctwjf.png 360w',
     );
+  });
+
+  it('should throw an error if provided with an invalid sizes prop', () => {
+    expect(() =>
+      render(
+        <Image
+          alt="jedi knight"
+          apiVersion="1"
+          cloudName="catalinworks"
+          height={1660}
+          quality={90}
+          sizes="480"
+          src="blog/jedi-knight-3-v6_grl6fe.png"
+          switching={Switching.Density}
+          width={1823}
+        />,
+      ),
+    ).toThrow('Sizes attribute is not valid');
+  });
+
+  it('should hide the placeholder image after the image is loaded', () => {
+    const { getAllByAltText } = render(
+      <Image
+        alt="jedi knight"
+        apiVersion="1"
+        cloudName="catalinworks"
+        height={1660}
+        quality={90}
+        sizes="480px"
+        src="blog/jedi-knight-3-v6_grl6fe.png"
+        switching={Switching.Density}
+        width={1823}
+      />,
+    );
+
+    const image = getAllByAltText('jedi knight');
+
+    expect(image[0]).toHaveAttribute('style', 'position: absolute; inset: 0;');
+
+    fireEvent.load(image[1]);
+
+    expect(image[0]).toHaveAttribute(
+      'style',
+      'position: absolute; inset: 0; display: none;',
+    );
+  });
+
+  it('should call the onLoaded callback function after the image is loaded', () => {
+    const mockFunc = jest.fn();
+
+    const { getAllByAltText } = render(
+      <Image
+        alt="jedi knight"
+        apiVersion="1"
+        cloudName="catalinworks"
+        height={1660}
+        quality={90}
+        sizes="480px"
+        src="blog/jedi-knight-3-v6_grl6fe.png"
+        switching={Switching.Density}
+        width={1823}
+        dataIndex="1"
+        onLoaded={mockFunc}
+      />,
+    );
+
+    const image = getAllByAltText('jedi knight');
+
+    fireEvent.load(image[1]);
+
+    expect(mockFunc).toHaveBeenCalledTimes(1);
   });
 });
