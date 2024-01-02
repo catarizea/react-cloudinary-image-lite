@@ -102,14 +102,14 @@ Props marked with * are mandatory.
 
 | Prop name            | Type                        | Example Value                             | Explanation                                                |
 | -------------------- | --------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
-| src*                 | string                      | "blog/rabbitmq_rctwjf.png"                |                                                            |
+| src*                 | string                      | "blog/rabbitmq_rctwjf.png"                | check Cloudinary console for the asset ID                  |
 | width*               | number                      | 850                                       |                                                            |
 | height*              | number                      | 882                                       |                                                            |
 | switching*           | Switching                   | Switching.Density or Switching.Resolution |                                                            |
 | alt*                 | string                      | "rabbitmq"                                |                                                            |
 | quality*             | number                      | 90                                        |                                                            |
 | sizes*               | string                      | "480px"                                   | or longer string for resolution switching (see above)      |
-| cloudName*           | string                      | "catalinworks"                            |                                                            |
+| cloudName*           | string                      | "catalinworks"                            | check Cloudinary console for product environment           |
 | apiVersion*          | string                      | "1"                                       |                                                            |
 | aspectRatio          | number                      | 0.9                                       | aspect ratio to crop the original image                    |
 | priority             | boolean                     | true                                      | sets loading="eager" and fetchpriority="high"              |
