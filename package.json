@@ -15,7 +15,10 @@
     "husky:configure": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "prebuild": "npm run clean",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook:build": "storybook build",
+    "storybook:dev": "storybook dev -p 6006",
+    "storybook:serve": "cd storybook-static && http-server -p 6006"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -55,6 +58,13 @@
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-terser": "0.4.4",
     "@rollup/plugin-typescript": "11.1.5",
+    "@storybook/addon-essentials": "7.6.7",
+    "@storybook/addon-interactions": "7.6.7",
+    "@storybook/addon-links": "7.6.7",
+    "@storybook/blocks": "7.6.7",
+    "@storybook/react": "7.6.7",
+    "@storybook/react-webpack5": "7.6.7",
+    "@storybook/test": "7.6.7",
     "@types/node": "20.10.6",
     "@types/react": "18.2.46",
     "@typescript-eslint/eslint-plugin": "6.17.0",
@@ -62,6 +72,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.1.2",
     "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-storybook": "0.6.15",
     "http-server": "14.1.1",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
@@ -73,6 +84,7 @@
     "rollup-plugin-dts": "6.1.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.2",
+    "storybook": "7.6.7",
     "typescript": "5.3.3"
   }
 }
