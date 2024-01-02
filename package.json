@@ -1,0 +1,79 @@
+{
+  "name": "react-cloudinary-image-lite",
+  "version": "1.0.0",
+  "description": "React image component to build Cloudinary image sets using density or resolution switching",
+  "main": "dist/cjs/bundle.js",
+  "module": "dist/esm/bundle.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "husky:configure": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "prebuild": "npm run clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "npm run lint",
+      "npm run format"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catarizea/react-cloudinary-image-lite.git"
+  },
+  "keywords": [
+    "react",
+    "cloudinary",
+    "image",
+    "responsive",
+    "density",
+    "resolution"
+  ],
+  "author": "Catalin Rizea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catarizea/react-cloudinary-image-lite/issues"
+  },
+  "homepage": "https://github.com/catarizea/react-cloudinary-image-lite#readme",
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "25.0.7",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-terser": "0.4.4",
+    "@rollup/plugin-typescript": "11.1.5",
+    "@types/node": "20.10.6",
+    "@types/react": "18.2.46",
+    "@typescript-eslint/eslint-plugin": "6.17.0",
+    "dotenv-cli": "7.3.0",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.2",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "http-server": "14.1.1",
+    "husky": "8.0.3",
+    "lint-staged": "15.2.0",
+    "prettier": "3.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "rimraf": "5.0.5",
+    "rollup": "4.9.2",
+    "rollup-plugin-dts": "6.1.0",
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-postcss": "4.0.2",
+    "typescript": "5.3.3"
+  }
+}
