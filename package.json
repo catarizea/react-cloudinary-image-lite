@@ -12,9 +12,12 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --list-different \"src/**/*.{ts,tsx}\"",
     "husky:configure": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "prebuild": "npm run clean",
+    "release:dry": "release-it --dry-run",
+    "release": "release-it",
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook:build": "storybook build",
@@ -23,9 +26,9 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "npm run test",
       "npm run lint",
-      "npm run format"
+      "npm run format",
+      "npm run test"
     ]
   },
   "husky": {
@@ -56,6 +59,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "8.0.1",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-terser": "0.4.4",
@@ -86,6 +90,7 @@
     "prettier": "3.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "release-it": "17.0.1",
     "rimraf": "5.0.5",
     "rollup": "4.9.2",
     "rollup-plugin-dts": "6.1.0",
