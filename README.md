@@ -2,7 +2,7 @@
 
 This component is preparing **WebP and AVIF image sets** from assets hosted on Cloudinary, using **density or resolution switching** and a **blurred preloading image placeholder**.
 
-This a simple no-fuss React Image component to help you get up and running with responsive image sets from Cloudinary. For a more complex use case you can find other packages on NPM registry like Cloudinary React SDK `@cloudinary/react`.
+This a simple no fuss React Image component to help you get up and running with responsive image sets from Cloudinary. For a more complex use case you can find other packages on NPM registry like Cloudinary React SDK `@cloudinary/react`.
 
 ## Installation
 
