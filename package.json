@@ -1,6 +1,6 @@
 {
   "name": "react-cloudinary-image-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React image component to build Cloudinary image sets using density or resolution switching and blurred prealoading image placeholder",
   "main": "dist/cjs/bundle.js",
   "module": "dist/esm/bundle.js",
