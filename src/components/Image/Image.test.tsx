@@ -81,6 +81,94 @@ describe('Image', () => {
         />,
       ),
     ).toThrow('Sizes attribute is not valid');
+
+    expect(() =>
+      render(
+        <Image
+          alt="jedi knight"
+          apiVersion="1"
+          cloudName="catalinworks"
+          height={1660}
+          quality={90}
+          sizes="48px0"
+          src="blog/jedi-knight-3-v6_grl6fe.png"
+          switching={Switching.Density}
+          width={1823}
+        />,
+      ),
+    ).toThrow('Sizes attribute is not valid');
+
+    expect(() =>
+      render(
+        <Image
+          alt="rabbitmq"
+          apiVersion="1"
+          aspectRatio={0.9}
+          cloudName="catalinworks"
+          height={882}
+          priority
+          quality={90}
+          sizes="(min-width: 1536px) 500px, (min-width: 1280px) 400px, (min-width: 1024px) 400px, (min-width: 768px) 450px, px"
+          src="blog/rabbitmq_rctwjf.png"
+          switching={Switching.Resolution}
+          width={850}
+        />,
+      ),
+    ).toThrow('Sizes attribute is not valid');
+
+    expect(() =>
+      render(
+        <Image
+          alt="rabbitmq"
+          apiVersion="1"
+          aspectRatio={0.9}
+          cloudName="catalinworks"
+          height={882}
+          priority
+          quality={90}
+          sizes="min-width: 1536px) 500px, (min-width: 1280px) 400px, (min-width: 1024px) 400px, (min-width: 768px) 450px, 360px"
+          src="blog/rabbitmq_rctwjf.png"
+          switching={Switching.Resolution}
+          width={850}
+        />,
+      ),
+    ).toThrow('Sizes attribute is not valid');
+
+    expect(() =>
+      render(
+        <Image
+          alt="rabbitmq"
+          apiVersion="1"
+          aspectRatio={0.9}
+          cloudName="catalinworks"
+          height={882}
+          priority
+          quality={90}
+          sizes=""
+          src="blog/rabbitmq_rctwjf.png"
+          switching={Switching.Resolution}
+          width={850}
+        />,
+      ),
+    ).toThrow('Sizes attribute is not valid');
+
+    expect(() =>
+      render(
+        <Image
+          alt="rabbitmq"
+          apiVersion="1"
+          aspectRatio={0.9}
+          cloudName="catalinworks"
+          height={882}
+          priority
+          quality={90}
+          sizes="(min-width: 1536px) 500px, (min-width: 1280px) 400px, (min-width: 1024px) 400px, (min-width: 768px) trappx, 360px"
+          src="blog/rabbitmq_rctwjf.png"
+          switching={Switching.Resolution}
+          width={850}
+        />,
+      ),
+    ).toThrow('Sizes attribute is not valid');
   });
 
   it('should hide the placeholder image after the image is loaded', () => {
@@ -134,5 +222,49 @@ describe('Image', () => {
     fireEvent.load(image[1]);
 
     expect(mockFunc).toHaveBeenCalledTimes(1);
+  });
+
+  it('should set flex-shrink: 0 to parent div if prop notResponsive is present', () => {
+    const { getAllByAltText } = render(
+      <Image
+        alt="jedi knight"
+        apiVersion="1"
+        cloudName="catalinworks"
+        height={1660}
+        quality={90}
+        sizes="480px"
+        src="blog/jedi-knight-3-v6_grl6fe.png"
+        switching={Switching.Density}
+        width={1823}
+        notResponsive
+      />,
+    );
+
+    const image = getAllByAltText('jedi knight');
+    const parentDiv = image[0].parentElement;
+
+    expect(parentDiv).toHaveStyle('flex-shrink: 0;');
+  });
+
+  it('should set className to parent div if prop className is set', () => {
+    const { getAllByAltText } = render(
+      <Image
+        alt="jedi knight"
+        apiVersion="1"
+        cloudName="catalinworks"
+        height={1660}
+        quality={90}
+        sizes="480px"
+        src="blog/jedi-knight-3-v6_grl6fe.png"
+        switching={Switching.Density}
+        width={1823}
+        className="test-class"
+      />,
+    );
+
+    const image = getAllByAltText('jedi knight');
+    const parentDiv = image[0].parentElement;
+
+    expect(parentDiv).toHaveClass('test-class');
   });
 });

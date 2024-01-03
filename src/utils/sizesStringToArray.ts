@@ -51,13 +51,7 @@ const parseItem = (item: string): ResponseItem => {
     return null;
   }
 
-  const validWidth = validateValue(parts[1]);
-
-  if (validWidth === null) {
-    return null;
-  }
-
-  const width = parseWidth(validWidth);
+  const width = parseWidth(parts[1].trim());
 
   if (!width) {
     return null;
@@ -67,19 +61,13 @@ const parseItem = (item: string): ResponseItem => {
 };
 
 const sizesStringToArray = (sizesString: string): Response => {
+  if (!sizesString) {
+    return null;
+  }
+
   const trimmed = sizesString.trim();
 
   const sizes = trimmed.split(',');
-
-  if (!sizes.length) {
-    const parsedItem = parseItem(trimmed);
-
-    if (!parsedItem) {
-      return null;
-    }
-
-    return [parsedItem];
-  }
 
   const arr = [];
 
