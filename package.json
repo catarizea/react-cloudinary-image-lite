@@ -13,7 +13,7 @@
     "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "format:check": "prettier --list-different \"src/**/*.{ts,tsx}\"",
-    "husky:configure": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "husky:configure": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\" && npx husky add .husky/commit-msg \"npx --no-install commitlint --edit \"$1\"\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "prebuild": "npm run clean",
     "release:dry": "release-it --dry-run",
@@ -59,6 +59,8 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
     "@release-it/conventional-changelog": "8.0.1",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
