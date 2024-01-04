@@ -4,6 +4,7 @@
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/catarizea/react-cloudinary-image-lite)
 ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$coverage$)
 ![GitHub issues](https://img.shields.io/github/issues/catarizea/react-cloudinary-image-lite)
+![Known Vulnerabilities](https://snyk.io/test/github/catarizea/react-cloudinary-image-lite/badge.svg)
 
 This component is preparing **WebP and AVIF image sets** from assets hosted on Cloudinary, using **density or resolution switching** and a **blurred preloading image placeholder**.
 
