@@ -118,6 +118,7 @@ Props marked with * are mandatory.
 | cloudName*           | string                      | "catalinworks"                            | check Cloudinary console for product environment           |
 | apiVersion*          | string                      | "1"                                       |                                                            |
 | aspectRatio          | number                      | 0.9                                       | aspect ratio to crop the original image                    |
+| noPlaceholder        | boolean                     | true                                      | removes the blurred preloading placeholder image           |
 | priority             | boolean                     | true                                      | sets loading="eager" and fetchpriority="high"              |
 | className            | string                      | "some-class"                              | optional prop for the parent div                           |
 | style                | CSSProperties               | { marginTop: '10px' }                     | optional prop for the parent div                           |
