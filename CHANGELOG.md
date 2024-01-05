@@ -1,5 +1,7 @@
 
 
+## [1.1.1](https://github.com/catarizea/react-cloudinary-image-lite/compare/1.1.0...1.1.1) (2024-01-05)
+
 ## [1.1.0](https://github.com/catarizea/react-cloudinary-image-lite/compare/1.0.2...1.1.0) (2024-01-05)
 
 

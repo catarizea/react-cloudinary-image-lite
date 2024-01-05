@@ -1,6 +1,6 @@
 {
   "name": "react-cloudinary-image-lite",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React image component to build responsive WebP and AVIF image sets from Cloudinary assets, using density or resolution switching and blurred prealoading image placeholder",
   "main": "dist/cjs/bundle.js",
   "module": "dist/esm/bundle.js",
