@@ -25,8 +25,9 @@ interface ImageProps extends React.DetailedHTMLProps<React.ImgHTMLAttributes<HTM
     dataIndex?: string;
     cloudName: string;
     apiVersion: string;
+    noPlaceholder?: boolean;
 }
 
-declare const Image: ({ src, width, height, alt, priority, className, placeholderClassName, quality, sizes, switching, notResponsive, style, onLoaded, aspectRatio, dataIndex, cloudName, apiVersion, ...restProps }: ImageProps) => React.JSX.Element;
+declare const Image: ({ src, width, height, alt, priority, className, placeholderClassName, quality, sizes, switching, notResponsive, style, onLoaded, aspectRatio, dataIndex, cloudName, apiVersion, noPlaceholder, ...restProps }: ImageProps) => React.JSX.Element;
 
 export { Image, Switching };

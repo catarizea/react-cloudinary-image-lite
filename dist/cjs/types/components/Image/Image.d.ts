@@ -17,7 +17,8 @@ export interface ImageProps extends React.DetailedHTMLProps<React.ImgHTMLAttribu
     dataIndex?: string;
     cloudName: string;
     apiVersion: string;
+    noPlaceholder?: boolean;
 }
 export { Switching };
-export declare const Image: ({ src, width, height, alt, priority, className, placeholderClassName, quality, sizes, switching, notResponsive, style, onLoaded, aspectRatio, dataIndex, cloudName, apiVersion, ...restProps }: ImageProps) => React.JSX.Element;
+export declare const Image: ({ src, width, height, alt, priority, className, placeholderClassName, quality, sizes, switching, notResponsive, style, onLoaded, aspectRatio, dataIndex, cloudName, apiVersion, noPlaceholder, ...restProps }: ImageProps) => React.JSX.Element;
 export default Image;
