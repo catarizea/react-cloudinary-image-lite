@@ -6,5 +6,5 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
-  coverageReporters: ['json-summary'],
+  coverageReporters: ['json-summary', 'text', 'lcov'],
 };

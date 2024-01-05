@@ -25,6 +25,7 @@ export interface ImageProps
   dataIndex?: string;
   cloudName: string;
   apiVersion: string;
+  noPlaceholder?: boolean;
 }
 
 export { Switching };
@@ -47,6 +48,7 @@ export const Image = ({
   dataIndex,
   cloudName,
   apiVersion,
+  noPlaceholder,
   ...restProps
 }: ImageProps) => {
   const [loaded, loadedSet] = useState(false);
@@ -95,7 +97,7 @@ export const Image = ({
 
   let placeholderStyle: CSSProperties = {};
 
-  if (loaded) {
+  if (!noPlaceholder && loaded) {
     placeholderStyle = { display: 'none' };
   }
 
@@ -111,25 +113,27 @@ export const Image = ({
       style={{ ...styles, ...style, position: 'relative', overflow: 'hidden' }}
       {...dataIndexAttr}
     >
-      <img
-        src={createUrl({
-          id: src,
-          quality: 'auto',
-          format: 'auto',
-          width: 100,
-          aspectRatio,
-          blur: 1000,
-          apiVersion,
-          cloudName,
-        })}
-        width={computedWidth}
-        height={computedHeight}
-        className={placeholderClassName}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchpriority={priority ? 'high' : 'low'}
-        alt={alt}
-        style={{ position: 'absolute', inset: 0, ...placeholderStyle }}
-      />
+      {!noPlaceholder && (
+        <img
+          src={createUrl({
+            id: src,
+            quality: 'auto',
+            format: 'auto',
+            width: 100,
+            aspectRatio,
+            blur: 1000,
+            apiVersion,
+            cloudName,
+          })}
+          width={computedWidth}
+          height={computedHeight}
+          className={placeholderClassName}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'low'}
+          alt={alt}
+          style={{ position: 'absolute', inset: 0, ...placeholderStyle }}
+        />
+      )}
       <picture
         onLoad={() => {
           loadedSet(true);

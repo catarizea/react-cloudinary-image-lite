@@ -65,6 +65,33 @@ describe('Image', () => {
     );
   });
 
+  it('should not render the placeholder image if noPlaceholder prop is set to true', () => {
+    const { getAllByAltText } = render(
+      <Image
+        alt="jedi knight"
+        apiVersion="1"
+        cloudName="catalinworks"
+        height={1660}
+        quality={90}
+        sizes="480px"
+        src="blog/jedi-knight-3-v6_grl6fe.png"
+        switching={Switching.Density}
+        width={1823}
+        noPlaceholder
+      />,
+    );
+
+    const image = getAllByAltText('jedi knight');
+
+    expect(image.length).toEqual(1);
+    expect(image[0]).toHaveAttribute('loading', 'lazy');
+    expect(image[0]).toHaveAttribute('fetchpriority', 'low');
+    expect(image[0]).toHaveAttribute(
+      'srcset',
+      'https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,w_480/v1/blog/jedi-knight-3-v6_grl6fe.png 1x, https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,w_480,dpr_2/v1/blog/jedi-knight-3-v6_grl6fe.png 2x,  https://res.cloudinary.com/catalinworks/image/upload/q_90,f_webp,w_480,dpr_3/v1/blog/jedi-knight-3-v6_grl6fe.png 3x',
+    );
+  });
+
   it('should throw an error if provided with an invalid sizes prop', () => {
     expect(() =>
       render(

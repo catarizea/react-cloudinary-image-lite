@@ -45,3 +45,18 @@ export const Resolution: Story = {
     apiVersion: '1',
   },
 };
+
+export const NoPlaceholder: Story = {
+  args: {
+    src: 'blog/jedi-knight-3-v6_grl6fe.png',
+    width: 1823,
+    height: 1660,
+    alt: 'jedi knight',
+    switching: Switching.Density,
+    quality: 90,
+    sizes: '480px',
+    cloudName: 'catalinworks',
+    apiVersion: '1',
+    noPlaceholder: true,
+  },
+};
